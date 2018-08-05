@@ -60,9 +60,9 @@ bot.on("ready", () => {
   console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
 
   /* Set Bot Activity */
-  if (bot.guilds.size > 1); //If bot is serving more than 1 guild
+  if (bot.guilds.size > 1) //If bot is serving more than 1 guild
   {
-    bot.user.setActivity(`Serving ${bot.guilds.size} Guilds`); //Set Activity
+    bot.user.setActivity(`Serving ${bot.guilds.size} Guilds`) //Set Activity
   }
   else //If bot is serving less than 2 guilds
   {
