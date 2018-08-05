@@ -1,13 +1,14 @@
 {
   "name": "jeffbot-v3",
-  "version": "0.3",
+  "version": "v0.3.0-alpha",
   "description": "A simple Discord bot coded with Node JS called Jeff",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.16.3"
+    "discord.js": "^11.3.2",
+    "express": "^4.15.5"
   },
   "engines": {
     "node": "8.11.3"
@@ -17,9 +18,5 @@
     "url": "git+https://github.com/seenashafai/jeffbot-v3.git"
   },
   "license": "MIT",
-  "homepage": "https://github.com/seenashafai/jeffbot-v3#readme",
-  "dependencies": {
-    "discord.js": "^11.3.2",
-    "express": "^4.15.5"
-  }
+  "homepage": "https://github.com/seenashafai/jeffbot-v3#readme"
 }
