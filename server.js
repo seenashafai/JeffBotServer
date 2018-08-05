@@ -30,11 +30,12 @@ bot.on('message', message =>  {
   if (message.member.roles.has('475333748620001280')) //Checks for role (Jeff), Role ID hardcoded
   {
     /*  Handling original user message */
-    console.log(message.msgcontent); //Output the message from the user to the console
-    message.delete(); //Delete the user's message from the chat channel
-    var splitStringArray = message.msgcontent.split(" "); //Split message into words, create array of words
-    var msgWordCount = splitStringArray.length; //Check how many words in the original message
-    console.log(msgWordCount); //Output number of words in original message to console
+    var msgcontent = message.content
+    console.log(msgcontent) //Output the message from the user to the console
+    message.delete() //Delete the user's message from the chat channel
+    var splitStringArray = msgcontent.split(" ") //Split message into words, create array of words
+    var msgWordCount = splitStringArray.length //Check how many words in the original message
+    console.log(msgWordCount) //Output number of words in original message to console
 
     /*  For Loop to create array of 'jeff' */
     var i; //Declare loop variable
