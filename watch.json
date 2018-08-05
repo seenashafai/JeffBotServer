@@ -1,4 +1,4 @@
-/*{
+{
   "install": {
     "include": [
       "^package\\.json$",
@@ -17,4 +17,3 @@
   },
   "throttle": 900000
 }
-*/
