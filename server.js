@@ -8,7 +8,6 @@ const app = express();
 
 /* Calls */
 const Discord = require('discord.js'); //Calling discord.js Package
-const config = require('./config.json'); //Calling config.js File
 const bot = new Discord.Client(); //Initialise discord bot instance
 
 /* Listener Event: Message Received */
@@ -17,13 +16,12 @@ bot.on('message', message =>  {
   /* Variables */
   var sender = message.author;
   var msg = message.content.toUpperCase(); //Converts entire message to upper case
-  var prefix = (config.prefix); //Declares prefix as defined in config.js file
 
   /* Checks for botception */
   if (message.author.bot) return;
 
   /* Ping Pong Function */
-  if (msg === prefix + 'PING') //Checks for presence of prefix
+  if (msg === ">" + 'PING') //Checks for presence of prefix
   {
     message.channel.send('Pong!') //Send 'Pong' in chat channel
   }
@@ -34,7 +32,7 @@ bot.on('message', message =>  {
     /*  Handling original user message */
     console.log(message.msgcontent); //Output the message from the user to the console
     message.delete(); //Delete the user's message from the chat channel
-    var splitStringArray = msgcontent.split(" "); //Split message into words, create array of words
+    var splitStringArray = message.msgcontent.split(" "); //Split message into words, create array of words
     var msgWordCount = splitStringArray.length; //Check how many words in the original message
     console.log(msgWordCount); //Output number of words in original message to console
 
@@ -46,7 +44,7 @@ bot.on('message', message =>  {
     }
 
     /* Outputting jeffArray */
-    jeffString = jeffArray.join(" "); //Turn array into string separated with spaces
+    var jeffString = jeffArray.join(" "); //Turn array into string separated with spaces
     message.channel.send(jeffString); //Send jeffString into chat channel
     message.author.send('You just got Jeffed! Tag your friends to Jeff them also!') //PM author of original message
   }
@@ -71,7 +69,7 @@ bot.on("ready", () => {
 });
 
 /* Login */
-bot.login(config.token); //Bot login with token defined in congfig.js
+bot.login(process.env.TOKEN); //Bot login with token defined in congfig.js
 
 
 app.get("/", (request, response) => {
