@@ -27,7 +27,7 @@ bot.on('message', message =>  {
   }
 
   /* Delete message and replace with Jeffs */
-  if (message.member.roles.has('475333748620001280')) //Checks for role (Jeff), Role ID hardcoded
+  if ((message.member.roles.has('475333748620001280')) || (message.member.roles.has('ROLE_ID_GOES_HERE')))//Checks for role (Jeff), Role ID hardcoded
   {
     /*  Handling original user message */
     var msgcontent = message.content
@@ -57,8 +57,10 @@ bot.on("ready", () => {
 
   //Output basic statistics of bot to console
   console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
+  bot.user.setActivity(`Serving ${bot.guilds.size} Guilds`) //Set Activity
 
-  /* Set Bot Activity */
+
+  /* OLD - Activity selection
   if (bot.guilds.size > 1) //If bot is serving more than 1 guild
   {
     bot.user.setActivity(`Serving ${bot.guilds.size} Guilds`) //Set Activity
@@ -67,6 +69,8 @@ bot.on("ready", () => {
   {
     bot.user.setActivity(`Serving ${bot.guilds.size} Guild`); //Set Activity
   }
+  */
+  
 });
 
 /* Login */
