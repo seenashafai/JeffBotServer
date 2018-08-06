@@ -6,6 +6,9 @@ const http = require('http');
 const express = require('express');
 const app = express();
 
+//global variables
+var jeffRole = ''
+
 /* Calls */
 const Discord = require('discord.js'); //Calling discord.js Package
 const bot = new Discord.Client(); //Initialise discord bot instance
@@ -28,21 +31,20 @@ bot.on('message', message =>  {
 
   if (msg === ">" + 'JEFFICATE')
   {
-      message.guild.createRole({name:'Jeffe'})
+      message.guild.createRole({name:'Jeff'})
       message.channel.send('It is done')
-      
   }
   
     if (msg === ">" + 'FINDJEFF')
   {
-      
-      var jeffRoleID = message.guild.roles.find("name", "Jeffe")
-      console.log(jeffRoleID)
-      message.channel.send('jeffRoleID')
+      jeffRole = message.guild.roles.find("name", "Jeff")
+      console.log(jeffRole.name)
+      console.log(jeffRole.id)
+      message.channel.send(jeffRole.name)
   }
   
   /* Delete message and replace with Jeffs */
-  if ((message.member.roles.has('475333748620001280')) || (message.member.roles.has('ROLE_ID_GOES_HERE')))//Checks for role (Jeff), Role ID hardcoded
+  if (message.member.roles.has(jeffRole.id)) //Checks for role (Jeff), Role ID hardcoded
   {
     /*  Handling original user message */
     var msgcontent = message.content
