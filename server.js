@@ -26,22 +26,29 @@ bot.on('message', message =>  {
     message.channel.send('Pong!') //Send 'Pong' in chat channel
   }
 
+  if (msg === ">" + 'JEFFICATE')
+  {
+    
+  }
+  
   /* Delete message and replace with Jeffs */
   if ((message.member.roles.has('475333748620001280')) || (message.member.roles.has('ROLE_ID_GOES_HERE')))//Checks for role (Jeff), Role ID hardcoded
   {
     /*  Handling original user message */
     var msgcontent = message.content
-    console.log(msgcontent) //Output the message from the user to the console
     message.delete() //Delete the user's message from the chat channel
     var splitStringArray = msgcontent.split(" ") //Split message into words, create array of words
     var msgWordCount = splitStringArray.length //Check how many words in the original message
-    console.log(msgWordCount) //Output number of words in original message to console
 
     /*  For Loop to create array of 'jeff' */
     var i; //Declare loop variable
     var jeffArray = []; //Declare empty array
-    for (i = 0; i < msgWordCount; i++) { //Loop through for number of words in message
+    jeffArray.push('Jeff')
+    if (msgWordCount > 1) 
+    {
+      for (i = 0; i < msgWordCount-1; i++) { //Loop through for number of words in message
         jeffArray.push('jeff') //Push 'jeff' to jeffArray
+      }
     }
 
     /* Outputting jeffArray */
