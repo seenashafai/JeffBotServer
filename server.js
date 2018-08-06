@@ -9,12 +9,21 @@ const app = express();
 //global variables
 var jeffRole = ''
 
+//global constants
+var prefix = ">"
+
 /* Calls */
 const Discord = require('discord.js'); //Calling discord.js Package
 const bot = new Discord.Client(); //Initialise discord bot instance
 
+
+
 /* Listener Event: Message Received */
 bot.on('message', message =>  {
+  
+  /* Command-Argument separator */
+  const args = message.content.slice(prefix.length).trim().split(/ +/g);
+  const command = args.shift().toLowerCase();
 
   /* Variables */
   var sender = message.author;
@@ -29,7 +38,7 @@ bot.on('message', message =>  {
     message.channel.send('Pongo!') //Send 'Pong' in chat channel
   }
 
-  if (msg === ">" + 'JEFFICATE')
+  if (msg === ">" + 'START')
   {
       message.guild.createRole({name:'Jeff'})
       message.channel.send('It is done')
@@ -42,6 +51,16 @@ bot.on('message', message =>  {
       console.log(jeffRole.id)
       message.channel.send(jeffRole.name)
   }
+  
+    if (command === 'jefficate')
+  {
+      jeffRole = message.guild.roles.find("name", "Jeff")
+      console.log(jeffRole.name)
+      console.log(jeffRole.id)
+      message.channel.send(jeffRole.name)
+  }
+  
+  
   
   /* Delete message and replace with Jeffs */
   if (message.member.roles.has(jeffRole.id)) //Checks for role (Jeff), Role ID hardcoded
