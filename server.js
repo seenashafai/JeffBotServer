@@ -31,6 +31,7 @@ bot.on('message', message =>  {
 
   /* Checks for botception */
   if (message.author.bot) return;
+  
 
   /* Ping Pong Function */
   if (msg === ">" + 'PING') //Checks for presence of prefix
@@ -62,26 +63,25 @@ bot.on('message', message =>  {
       member.addRole(jeffRole).catch(console.error);
 
 
-      /*
-      console.log(jeffRole.name)
+      console.log(member.username,'jefficated')
       console.log(jeffRole.id)
-      message.channel.send(jeffRole.name)
-      */
+      
   }
   
    if (command === 'unjefficate')
   {
+    if (message.member.roles.has(jeffRole.id)) return //Checks for role (Jeff), Role ID hardcoded and prevents self-unjeffication
+      console.log('Someone tried to unjefficate themeselves...')
       jeffRole = message.guild.roles.find("name", "Jeff")
       let member = message.mentions.members.first() || message.guild.members.get(args[0]);
       if(!member)
         return message.reply("Please mention a valid member of this server");
       member.removeRole(jeffRole).catch(console.error);
 
-      /*
-      console.log(jeffRole.name)
+      
+      console.log(member,'unjefficated')
       console.log(jeffRole.id)
-      message.channel.send(jeffRole.name)
-      */
+      
  }
   
   
