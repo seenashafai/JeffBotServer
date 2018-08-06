@@ -42,11 +42,12 @@ bot.on('message', message =>  {
   {
       message.guild.createRole({name:'Jeff'})
       message.channel.send('It is done')
+      jeffRole = message.guild.roles.find("name", "Jeff")
+
   }
   
     if (msg === ">" + 'FINDJEFF')
   {
-      jeffRole = message.guild.roles.find("name", "Jeff")
       console.log(jeffRole.name)
       console.log(jeffRole.id)
       message.channel.send(jeffRole.name)
