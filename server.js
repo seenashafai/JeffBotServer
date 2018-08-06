@@ -56,38 +56,63 @@ bot.on('message', message =>  {
     if (command === 'jefficate')
   {
       jeffRole = message.guild.roles.find("name", "Jeff")
+      let member = message.mentions.members.first() || message.guild.members.get(args[0]);
+      if(!member)
+        return message.reply("Please mention a valid member of this server");
+      member.addRole(jeffRole).catch(console.error);
+
+
+      /*
       console.log(jeffRole.name)
       console.log(jeffRole.id)
       message.channel.send(jeffRole.name)
+      */
   }
+  
+   if (command === 'unjefficate')
+  {
+      jeffRole = message.guild.roles.find("name", "Jeff")
+      let member = message.mentions.members.first() || message.guild.members.get(args[0]);
+      if(!member)
+        return message.reply("Please mention a valid member of this server");
+      member.removeRole(jeffRole).catch(console.error);
+
+      /*
+      console.log(jeffRole.name)
+      console.log(jeffRole.id)
+      message.channel.send(jeffRole.name)
+      */
+ }
   
   
   
   /* Delete message and replace with Jeffs */
-  if (message.member.roles.has(jeffRole.id)) //Checks for role (Jeff), Role ID hardcoded
-  {
-    /*  Handling original user message */
-    var msgcontent = message.content
-    message.delete() //Delete the user's message from the chat channel
-    var splitStringArray = msgcontent.split(" ") //Split message into words, create array of words
-    var msgWordCount = splitStringArray.length //Check how many words in the original message
-
-    /*  For Loop to create array of 'jeff' */
-    var i; //Declare loop variable
-    var jeffArray = []; //Declare empty array
-    jeffArray.push('Jeff')
-    if (msgWordCount > 1) 
+  
+  if (!jeffRole) return
+    if (message.member.roles.has(jeffRole.id)) //Checks for role (Jeff), Role ID hardcoded
     {
-      for (i = 0; i < msgWordCount-1; i++) { //Loop through for number of words in message
-        jeffArray.push('jeff') //Push 'jeff' to jeffArray
-      }
-    }
+      /*  Handling original user message */
+      var msgcontent = message.content
+      message.delete() //Delete the user's message from the chat channel
+      var splitStringArray = msgcontent.split(" ") //Split message into words, create array of words
+      var msgWordCount = splitStringArray.length //Check how many words in the original message
 
-    /* Outputting jeffArray */
-    var jeffString = jeffArray.join(" "); //Turn array into string separated with spaces
-    message.channel.send(jeffString); //Send jeffString into chat channel
-    message.author.send('You just got Jeffed! Tag your friends to Jeff them also!') //PM author of original message
-  }
+      /*  For Loop to create array of 'jeff' */
+      var i; //Declare loop variable
+      var jeffArray = []; //Declare empty array
+      jeffArray.push('Jeff')
+      if (msgWordCount > 1) 
+      {
+        for (i = 0; i < msgWordCount-1; i++) { //Loop through for number of words in message
+          jeffArray.push('jeff') //Push 'jeff' to jeffArray
+        }
+      }
+
+      /* Outputting jeffArray */
+      var jeffString = jeffArray.join(" "); //Turn array into string separated with spaces
+      message.channel.send(jeffString); //Send jeffString into chat channel
+      message.author.send('You just got Jeffed! Tag your friends to Jeff them also!') //PM author of original message
+    }
 });
 
 
