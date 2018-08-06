@@ -23,13 +23,15 @@ bot.on('message', message =>  {
   /* Ping Pong Function */
   if (msg === ">" + 'PING') //Checks for presence of prefix
   {
-    message.channel.send('Pong!') //Send 'Pong' in chat channel
+    message.channel.send('Pongo!') //Send 'Pong' in chat channel
   }
 
   if (msg === ">" + 'JEFFICATE')
   {
       message.guild.createRole({name:'Jeffe'})
       message.channel.send('It is done')
+      var jeffRoleID = message.guild.roles.find("name", "Jeff")
+      console.log(jeffRoleID)
   }
   
   /* Delete message and replace with Jeffs */

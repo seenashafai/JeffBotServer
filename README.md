@@ -1,27 +1,29 @@
-Welcome to Glitch
-=================
+# jeffbot-v3
 
-Click `Show` in the header to see your app live. Updates to your code will instantly deploy and update live.
+A Discord bot named Jeff
 
-**Glitch** is the friendly community where you'll build the app of your dreams. Glitch lets you instantly create, remix, edit, and host an app, bot or site, and you can invite collaborators or helpers to simultaneously edit code with you.
+_Uses_:
 
-Find out more [about Glitch](https://glitch.com/about).
+Best used as a mute function: assign the user in question with the Role, then add the Role ID to the relevant section in ```app.js``` and watch as the user is unable to send any messages. Instead, for every message they send, JeffBot will post a message with every word replaced with Jeff. The user will also receive a DM from JeffBot announcing to them that they have been Jeffed.
 
+_Development Files_:  
 
-Your Project
-------------
+	app.js: Contains the code executed by the bot after being activated
 
-On the front-end,
-- edit `public/client.js`, `public/style.css` and `views/index.html`
-- drag in `assets`, like images or music, to add them to your project
-
-On the back-end,
-- your app starts at `server.js`
-- add frameworks and packages in `package.json`
-- safely store app secrets in `.env` (nobody can see this but you and people you invite)
+	config.js: Contains confidential information about the bot
 
 
-Made by [Fog Creek](https://fogcreek.com/)
--------------------
+_Config.js Setup_:
 
-\ ゜o゜)ノ
+As the ``` config.js ``` file contains confidential information, you need to construct the file yourself if you want to use this code. Set up the file as such:
+
+```
+{
+  "token": "YOUR-TOKEN-HERE", //Token retrieved from your discord developer portal
+  "prefix": ">" //Prefix for bot commands- can be set to anything
+}
+```
+
+_Additional Notes_:
+
+The message must be deleted and reposted, rather than edited as Discord's Terms of Service do not allow editing of other users' messages for obvious reasons
