@@ -8,6 +8,8 @@ const app = express();
 
 //global variables
 var jeffRole = ''
+var modRole = ''
+var modArray = []
 
 //global constants
 var prefix = ">"
@@ -38,7 +40,7 @@ bot.on('message', message =>  {
   {
     message.channel.send('Pongo!') //Send 'Pong' in chat channel
   }
-
+  
   if (msg === ">" + 'START')
   {
       message.guild.createRole({name:'Jeff'})
@@ -74,17 +76,29 @@ bot.on('message', message =>  {
       console.log('Someone tried to unjefficate themeselves...')
       jeffRole = message.guild.roles.find("name", "Jeff")
       let member = message.mentions.members.first() || message.guild.members.get(args[0]);
+      console.log(member)
       if(!member)
         return message.reply("Please mention a valid member of this server");
       member.removeRole(jeffRole).catch(console.error);
 
       
       console.log(member,'unjefficated')
-      console.log(jeffRole.id)
-      
+      console.log(jeffRole.id) 
  }
   
-  
+  if (command === 'setmod')
+  {
+    console.log(message.guild.members.get(args[0]))
+    modRole = message.guild.roles.find("name", message.mentions.members.first())
+    if (!modRole)
+    {
+      return message.reply("Please enter a valid role")
+    }
+    modArray.push(modRole)
+    console.log(modArray)
+    var modString = modArray.join(" "); //Turn array into string separated with spaces
+    message.channel.send('Current mod roles:', modString)
+  }
   
   /* Delete message and replace with Jeffs */
   
