@@ -96,8 +96,8 @@ setInterval(() => {
   http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
 }, 280000);
 */
-// we've started you off with Express, 
-// but feel free to use whatever libs or frameworks you'd like through `package.json`.
+
+
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
