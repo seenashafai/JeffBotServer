@@ -60,11 +60,19 @@ bot.on('message', message =>  {
       message.channel.send(jeffRole.name)
   }
   
-  if (msg === ">" + 'FINDJEFFBOT')
+  if (msg === ">" + 'FINDJEFFINATOR')
   {
       console.log(jeffinatorRole.name);
       console.log(jeffinatorRole.id);
       message.channel.send(jeffinatorRole.name)
+  }
+  
+  if (msg === ">" + 'PURGEJEFF')
+  {
+      console.log('purgejeff');
+    
+      message.guild.removeRole(jeffRole)
+      
   }
 
   if (command === 'jefficate')
