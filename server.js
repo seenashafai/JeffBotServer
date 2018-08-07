@@ -41,13 +41,18 @@ bot.on('message', message =>  {
   if (msg === ">" + 'START')
   {
       message.guild.createRole({name:'Jeff'});
-      message.guild.createRole({name:'Jeffinator'});
       message.channel.send('It is done');
       jeffRole = message.guild.roles.find("name", "Jeff")
-      jeffinatorRole = message.guild.roles.find("name", "Jeffinator")
-      console.log(jeffinatorRole.name);
   }
 
+  if (msg === ">" + 'JEFFINATE')
+  {
+      message.guild.createRole({name:'Jeffinator'});
+      message.channel.send('It is done');
+      jeffinatorRole = message.guild.roles.find("name", "Jeffinator")
+  }
+  
+  
   if (msg === ">" + 'FINDJEFF')
   {
       console.log(jeffRole.name);
