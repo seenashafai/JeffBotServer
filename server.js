@@ -56,6 +56,7 @@ bot.on('message', message =>  {
   
   if (msg === ">" + 'FINDJEFF')
   {
+      jeffRole = message.guild.roles.find("name", "Jeff")
       console.log(jeffRole.name);
       console.log(jeffRole.id);
       message.channel.send(jeffRole.name)
@@ -104,8 +105,10 @@ bot.on('message', message =>  {
     if (message.member.roles.has(jeffRole.id))
     {
       //Checks for role (Jeff), Role ID hardcoded and prevents self-unjeffication
-      console.log('Someone tried to unjefficate themselves...');
+      console.log(message.member.user.username, 'tried to unjefficate themselves...');
     }
+    else
+    {
       jeffRole = message.guild.roles.find("name", "Jeff");
       let member = message.mentions.members.first() || message.guild.members.get(args[0]);
       if (!member)
@@ -115,6 +118,7 @@ bot.on('message', message =>  {
       console.log(member.user.username,'unjefficated');
       console.log(jeffRole.id)
     }
+  }
 
     if (command === 'setmod')
     {
