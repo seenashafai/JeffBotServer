@@ -12,7 +12,7 @@ const bot = new Discord.Client(); //Initialise discord bot instance
 
 //global variables
 var jeffRole = '';
-var jeffBotRole = '';
+var jeffinatorRole = '';
 var modRole = '';
 var modArray = [];
 
@@ -41,9 +41,11 @@ bot.on('message', message =>  {
   if (msg === ">" + 'START')
   {
       message.guild.createRole({name:'Jeff'});
+      message.guild.createRole({name:'Jeffinator'});
       message.channel.send('It is done');
       jeffRole = message.guild.roles.find("name", "Jeff")
-      jeffBotRole = message.guild.roles.find("name", "JeffBot")
+      jeffinatorRole = message.guild.roles.find("name", "Jeffinator")
+      console.log(jeffinatorRole.name);
   }
 
   if (msg === ">" + 'FINDJEFF')
@@ -55,23 +57,29 @@ bot.on('message', message =>  {
   
   if (msg === ">" + 'FINDJEFFBOT')
   {
-      console.log(jeffBotRole.name);
-      console.log(jeffBotRole.id);
-      message.channel.send(jeffBotRole.name)
+      console.log(jeffinatorRole.name);
+      console.log(jeffinatorRole.id);
+      message.channel.send(jeffinatorRole.name)
   }
 
   if (command === 'jefficate')
   {
-    if (message.member.roles.has(jeffBotRole.id))
+    if (message.member.roles.has(jeffinatorRole.id))
     {
         jeffRole = message.guild.roles.find("name", "Jeff");
         let member = message.mentions.members.first() || message.guild.members.get(args[0]);
-        if(!member)
-            return message.reply("Please mention a valid member of this server");
+        if (!member)
+        {
+          message.reply("Please mention a valid member of this server");
+        }
         member.addRole(jeffRole).catch(console.error);
 
         console.log(member.username,'jefficated');
         console.log(jeffRole.id)
+    }
+    else
+    {
+      message.channel.send("You do not have permission to use this command")
     }
   }
 
