@@ -42,9 +42,12 @@ bot.on('message', message =>  {
   {
     message.channel.send('To begin the work of JeffBot, type >start')
     message.channel.send('To create Jeffinators, use >jeffinator- only Jeffinators can Jeff others')
+    message.channel.send('Having created Jeffinators, give users the role of Jeffinator with >jeffinate @user')
+    message.channel.send('You may not jeffinate yourself')
     message.channel.send('Armed with the role of Jeffinator, you may Jeff a user like so: >jefficate @user')
     message.channel.send('Jeffinators may also unJeff Jeffed users, like so: >unjefficate @user')
     message.channel.send('Jeffed users may not unJeff themselves, and only Jeffinators may Jeff others.')
+    message.channel.send('Basic debugging: if the bot is ignoring the Jeff/Jeffinator roles, test whether the bot has detected the Jeff roles in your server. To test this, use >findjeff and >findjeffinator')
   }
   
   if (msg === ">" + 'START')
@@ -55,7 +58,7 @@ bot.on('message', message =>  {
       message.channel.send('Please now use >jeffinate to begin the rise of the Jeffinators')
   }
 
-  if (msg === ">" + 'JEFFINATE')
+  if (msg === ">" + 'JEFFINATOR')
   {
       message.guild.createRole({name:'Jeffinator'});
       message.channel.send('It is done');
@@ -76,7 +79,6 @@ bot.on('message', message =>  {
       }
       console.log(jeffRole.name);
       console.log(jeffRole.id);
-      message.channel.send(jeffRole.name)
   }
   
   if (msg === ">" + 'FINDJEFFINATOR')
@@ -147,6 +149,26 @@ bot.on('message', message =>  {
     }
   }
 
+  if (command === 'jeffinate')
+  {
+    jeffinatorRole = message.guild.roles.find("name", "Jeffinator")
+    if (message.member.roles.has(jeffinatorRole.id))
+    {
+        let member = message.mentions.members.first() || message.guild.members.get(args[0]);
+        if (!member)
+        {
+          message.reply("Please mention a valid member of this server");
+        }
+        member.addRole(jeffinatorRole).catch(console.error);
+
+        console.log(message.member.username, 'was jeffinated');
+    }
+    else
+    {
+      message.channel.send("You do not have permission to use this command")
+    }
+  }
+  
     if (command === 'setmod')
     {
         console.log(message.guild.members.get(args[0]));
