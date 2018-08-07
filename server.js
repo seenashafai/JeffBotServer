@@ -15,7 +15,6 @@ var jeffRole = '';
 var jeffinatorRole = '';
 var modRole = '';
 var modArray = [];
-var guildsArray = [];
 
 //global constants
 const prefix = ">";
