@@ -14,10 +14,13 @@ const embed = new Discord.RichEmbed()
   .setAuthor("Created by seenaweena")
   .setColor(0x00AE86)
   .setThumbnail("http://i.imgur.com/p2qNFag.png")
-  .setDescription("To begin the work of JeffBot, type >start" \n"To create Jeffinators, use >jeffinator- only Jeffinators can Jeff others'\n)
+  .setDescription("To begin the work of JeffBot, type >start \nTo create Jeffinators, use >jeffinator- only Jeffinators can Jeff others \nHaving created Jeffinators, give users the role of Jeffinator with >jeffinate @user \nArmed with the role of Jeffinator, you may Jeff a user like so: >jefficate @user \nJeffinators may also unJeff Jeffed users, like so: >unjefficate @user \nRegular users may not Jeffinate themselves- please be patient and allow senior Jeffinators to Jeffinate you if they so please \nJeffed users may not unJeff themselves, and only Jeffinators may Jeff others \n")
+  .addBlankField()  
   .setTimestamp()
   .setURL("https://jeffbot-v3.glitch.me")
-  .addField("How to use JeffBot")
+  .addField("How to use JeffBot", ">jefficate Jeff someone \n>unjefficate to unjeff someone \n>jeffinate to give someone the ability to jefficate others")
+  .addBlankField()
+  .addField("Basic Debugging", "if the bot is ignoring the Jeff/Jeffinator roles, test whether the bot has detected the Jeff roles in your server. To test this, use >findjeff and >findjeffinator")
   /*
    * Inline fields may not display as inline if the thumbnail and/or image is too big.
    */
@@ -26,8 +29,8 @@ const embed = new Discord.RichEmbed()
   /*
    * Blank field, useful to create some space.
    */
-  .addBlankField(true)
-  .addField("Thank you for using Jeffbot. Have a Jefftastic time!", true);
+  .addBlankField()
+  .setFooter("Thank you for using Jeffbot. Have a Jefftastic time!");
 
   
 
