@@ -39,6 +39,11 @@ bot.on('message', message =>  {
     message.channel.send('Pong!') //Send 'Pong' in chat channel
   }
 
+  if (msg === ">" + 'HELP')
+  {
+    message.channel.send
+  }
+  
   if (msg === ">" + 'START')
   {
       message.guild.createRole({name:'Jeff'});
