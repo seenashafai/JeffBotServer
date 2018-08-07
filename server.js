@@ -74,10 +74,7 @@ bot.on('message', message =>  {
         console.log(jeffRole.id)
     }
   }
-  else
-  {
-    message.channel.send('You do not have permission to use this command')
-  }
+
 
   if (command === 'unjefficate')
   {
