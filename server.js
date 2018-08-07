@@ -66,8 +66,7 @@ bot.on('message', message =>  {
 
 
       console.log(member.username,'jefficated')
-      console.log(jeffRole.id)
-      
+      console.log(jeffRole.id) 
   }
   
    if (command === 'unjefficate')
