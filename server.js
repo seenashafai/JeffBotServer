@@ -15,6 +15,7 @@ var jeffRole = '';
 var jeffinatorRole = '';
 var modRole = '';
 var modArray = [];
+var guildsArray = [];
 
 //global constants
 const prefix = ">";
@@ -71,8 +72,14 @@ bot.on('message', message =>  {
   {
       console.log('purgejeff');
       message.channel.send('Execute order Jeffty-Jeff')
-      message.guild.roles.get('jeffRole').delete()
+      message.guild.roles.get(jeffRole.id).delete()
       message.channel.send('It is done my lord')
+    
+      var i;
+      for (i = 0; i < message.guild.roles.size; i++) { //Loop through for number of words in message
+                guildsArray.push('guild') //Push 'jeff' to jeffArray
+            }
+      
       
   }
 
@@ -153,10 +160,7 @@ bot.on('message', message =>  {
         message.channel.send(jeffString); //Send jeffString into chat channel
         message.author.send('You just got Jeffed! Tag your friends to Jeff them also!') //PM author of original message
     }
-    else
-    {
-      message.channel.send('Please initialise JeffBot on your server by using ">start"');
-    }
+
 });
 
 
