@@ -9,6 +9,7 @@ const app = express();
 /* Initialise discord.js Calls */
 const Discord = require('discord.js'); //Calling discord.js Package
 const bot = new Discord.Client(); //Initialise discord bot instance
+const helpRichEmbed = 
 
 //global variables
 var jeffRole = '';
@@ -43,9 +44,9 @@ bot.on('message', message =>  {
     message.channel.send('To begin the work of JeffBot, type >start')
     message.channel.send('To create Jeffinators, use >jeffinator- only Jeffinators can Jeff others')
     message.channel.send('Having created Jeffinators, give users the role of Jeffinator with >jeffinate @user')
-    message.channel.send('You may not jeffinate yourself')
     message.channel.send('Armed with the role of Jeffinator, you may Jeff a user like so: >jefficate @user')
     message.channel.send('Jeffinators may also unJeff Jeffed users, like so: >unjefficate @user')
+    message.channel.send('Regular users may not Jeffinate themselves- please be patient and allow senior Jeffinators to Jeffinate you if they so please')
     message.channel.send('Jeffed users may not unJeff themselves, and only Jeffinators may Jeff others.')
     message.channel.send('Basic debugging: if the bot is ignoring the Jeff/Jeffinator roles, test whether the bot has detected the Jeff roles in your server. To test this, use >findjeff and >findjeffinator')
   }
