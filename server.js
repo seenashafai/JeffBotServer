@@ -63,6 +63,7 @@ bot.on('message', message =>  {
   
   if (msg === ">" + 'FINDJEFFINATOR')
   {
+      jeffinatorRole = message.guild.roles.find("name", "Jeffinator")
       console.log(jeffinatorRole.name);
       console.log(jeffinatorRole.id);
       message.channel.send(jeffinatorRole.name)
@@ -73,14 +74,7 @@ bot.on('message', message =>  {
       console.log('purgejeff');
       message.channel.send('Execute order Jeffty-Jeff')
       message.guild.roles.get(jeffRole.id).delete()
-      message.channel.send('It is done my lord')
-    
-      var i;
-      for (i = 0; i < message.guild.roles.size; i++) { //Loop through for number of words in message
-                guildsArray.push('guild') //Push 'jeff' to jeffArray
-            }
-      
-      
+      message.channel.send('It is done my lord')          
   }
 
   if (command === 'jefficate')
@@ -95,7 +89,7 @@ bot.on('message', message =>  {
         }
         member.addRole(jeffRole).catch(console.error);
 
-        console.log(member.username,'jefficated');
+        console.log('jefficated');
         console.log(jeffRole.id)
     }
     else
@@ -107,16 +101,18 @@ bot.on('message', message =>  {
 
   if (command === 'unjefficate')
   {
-    if (message.member.roles.has(jeffRole.id)) return; //Checks for role (Jeff), Role ID hardcoded and prevents self-unjeffication
+    if (message.member.roles.has(jeffRole.id))
+    {
+      //Checks for role (Jeff), Role ID hardcoded and prevents self-unjeffication
       console.log('Someone tried to unjefficate themselves...');
+    }
       jeffRole = message.guild.roles.find("name", "Jeff");
       let member = message.mentions.members.first() || message.guild.members.get(args[0]);
-      console.log(member);
       if (!member)
         return message.reply("Please mention a valid member of this server");
       member.removeRole(jeffRole).catch(console.error);
 
-      console.log(member,'unjefficated');
+      console.log(member.user.username,'unjefficated');
       console.log(jeffRole.id)
     }
 
@@ -215,3 +211,4 @@ app.get('/', function(request, response) {
 var listener = app.listen(process.env.PORT, function() {
   console.log('Your app is listening on port ' + listener.address().port);
 });
+  
