@@ -8,6 +8,7 @@ const app = express();
 
 //global variables
 var jeffRole = ''
+
 var modRole = ''
 var modArray = []
 
