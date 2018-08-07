@@ -70,8 +70,9 @@ bot.on('message', message =>  {
   if (msg === ">" + 'PURGEJEFF')
   {
       console.log('purgejeff');
-    
-      message.guild.removeRole(jeffRole)
+      message.channel.send('Execute order Jeffty-Jeff')
+      message.guild.deleteRole(jeffRole)
+      message.channel.send('It is done my lord')
       
   }
 
