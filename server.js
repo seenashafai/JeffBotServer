@@ -40,7 +40,11 @@ bot.on('message', message =>  {
 
   if (msg === ">" + 'HELP')
   {
-    message.channel.send
+    message.channel.send('To begin the work of JeffBot, type >start')
+    message.channel.send('To create Jeffinators, use >jeffinator- only Jeffinators can Jeff others')
+    message.channel.send('Armed with the role of Jeffinator, you may Jeff a user like so: >jefficate @user')
+    message.channel.send('Jeffinators may also unJeff Jeffed users, like so: >unjefficate @user')
+    message.channel.send('Jeffed users may not unJeff themselves, and only Jeffinators may Jeff others.')
   }
   
   if (msg === ">" + 'START')
@@ -48,6 +52,7 @@ bot.on('message', message =>  {
       message.guild.createRole({name:'Jeff'});
       message.channel.send('It is done');
       jeffRole = message.guild.roles.find("name", "Jeff")
+      message.channel.send('Please now use >jeffinate to begin the rise of the Jeffinators')
   }
 
   if (msg === ">" + 'JEFFINATE')
@@ -61,6 +66,14 @@ bot.on('message', message =>  {
   if (msg === ">" + 'FINDJEFF')
   {
       jeffRole = message.guild.roles.find("name", "Jeff")
+      if (!jeffRole)
+      {
+        message.channel.send('JeffBot cannot find his Jeff role. Please delete any roles called Jeff and then run >start')
+      }
+      else
+      {
+        message.channel.send('Never fear, Jeff is indeed here')
+      }
       console.log(jeffRole.name);
       console.log(jeffRole.id);
       message.channel.send(jeffRole.name)
@@ -69,9 +82,17 @@ bot.on('message', message =>  {
   if (msg === ">" + 'FINDJEFFINATOR')
   {
       jeffinatorRole = message.guild.roles.find("name", "Jeffinator")
+      if (!jeffRole)
+      {
+        message.channel.send('JeffBot cannot find his Jeffinator role. Please delete any roles called Jeffinator and then run >jeffinate')
+      }
+      else
+      {
+        message.channel.send('Never fear, Jeffinator is indeed here')
+      }
       console.log(jeffinatorRole.name);
       console.log(jeffinatorRole.id);
-      message.channel.send(jeffinatorRole.name)
+      
   }
   
   if (msg === ">" + 'PURGEJEFF')
