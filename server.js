@@ -80,6 +80,7 @@ bot.on('message', message =>  {
 
   if (command === 'jefficate')
   {
+    jeffinatorRole = message.guild.roles.find("name", "Jeffinator")
     if (message.member.roles.has(jeffinatorRole.id))
     {
         jeffRole = message.guild.roles.find("name", "Jeff");
@@ -90,7 +91,7 @@ bot.on('message', message =>  {
         }
         member.addRole(jeffRole).catch(console.error);
 
-        console.log('jefficated');
+        console.log(message.member.username, 'was jefficated');
         console.log(jeffRole.id)
     }
     else
@@ -102,10 +103,11 @@ bot.on('message', message =>  {
 
   if (command === 'unjefficate')
   {
+    jeffRole = message.guild.roles.find("name", "Jeff")
     if (message.member.roles.has(jeffRole.id))
     {
       //Checks for role (Jeff), Role ID hardcoded and prevents self-unjeffication
-      console.log(message.member.user.username, 'tried to unjefficate themselves...');
+      console.log(message.member.user.username, 'tried to unjefficate themself...');
     }
     else
     {
