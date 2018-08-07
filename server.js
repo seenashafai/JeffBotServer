@@ -71,7 +71,7 @@ bot.on('message', message =>  {
   {
       console.log('purgejeff');
       message.channel.send('Execute order Jeffty-Jeff')
-      message.guild.deleteRole(jeffRole)
+      jeffRole.delete
       message.channel.send('It is done my lord')
       
   }
