@@ -7,6 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="screen" />
+    
 
 
     <!--
@@ -72,10 +73,16 @@ section .section-title {
 #footer ul.social li a i {
     margin-right: 5px;
 	font-size:25px;
-	-webkit-transition: .5s all ease;
+	-webkit-transition: .10s all ease;
 	-moz-transition: .5s all ease;
-	transition: .5s all ease;
-}
+	transition: .5s all ease
+    .tooltip {
+      visibility: visible;
+      opacity: 1;
+      transform: translate(-50%, -150%);
+    }
+  }
+
 #footer ul.social li:hover a i {
 	font-size:30px;
 	margin-top:-10px;
@@ -86,6 +93,7 @@ section .section-title {
 }
 #footer ul.social li a:hover{
 	color:#eeeeee;
+  
 }
 #footer ul.quick-links li{
 	padding: 3px 0;
@@ -171,6 +179,38 @@ section .section-title {
 .btn-secondary{
   margin-bottom: 1rem;
       }
+      
+/* Tooltips */
+.tooltip {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  padding: 0.8rem 1rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  opacity: 0;
+  pointer-events: none;
+  text-transform: uppercase;
+  transform: translate(-50%, -100%);
+  transition: all 0.3s ease;
+  z-index: 1;
+  
+  &:after {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    content: "";
+    border: solid;
+    border-width: 10px 10px 0 10px;
+    border-color: transparent;
+    transform: translate(-50%, 100%);
+  }
+}
       
 /* Featurettes
 ------------------------- */
@@ -419,9 +459,9 @@ section .section-title {
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
 					<ul class="list-unstyled list-inline social text-center">
-						<li class="list-inline-item"><a href="javascript:void();" class="facebook add-tooltip" title data-original-title="Follow us on Facebook" data-placement="top" data-toggle="tooltip"><i class="fa fa-facebook"></i></a></li>
+						<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-facebook"></i></a></li>
 						<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-instagram"></i></a></li>
+						<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-instagram"><div class="tooltip">Instagram</div></i></a></li>
 						<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-google-plus"></i></a></li>
 						<li class="list-inline-item"><a href="#" target="_blank"><i class="fa fa-envelope"></i></a></li>
 					</ul>
