@@ -139,6 +139,7 @@ bot.on('message', async message =>  {
           message.reply("Please mention a valid member of this server");
         }
         member.addRole(jeffRole).catch(console.error);
+        message.channel.send(member.user.username,'jefficated');
         console.log(member.user.username,'jefficated');
     }
     else
@@ -165,6 +166,7 @@ bot.on('message', async message =>  {
       if (!member)
         return message.reply("Please mention a valid member of this server");
       member.removeRole(jeffRole).catch(console.error);
+      message.channel.send(` ${message.channel.send} unjefficated`);
       console.log(member.user.username,'unjefficated');
     }
   }
