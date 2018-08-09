@@ -6,6 +6,15 @@ const http = require('http');
 const express = require('express');
 const app = express();
 
+/* Init log4js */ 
+const log4js = require('log4js');
+log4js.configure({
+  appenders: { jeffBot: { type: 'file', filename: 'jeffBot.log' } },
+  categories: { default: { appenders: ['jeffBot'], level: 'error' } }
+});
+
+const logger = log4js.getLogger('jeffBot');
+
 /* Initialise discord.js Calls */
 const Discord = require('discord.js'); //Calling discord.js Package
 const bot = new Discord.Client(); //Initialise discord bot instance
@@ -216,6 +225,7 @@ bot.on("ready", () => {
 
   //Output basic statistics of bot to console
   console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
+  logger.info(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`)
   bot.user.setActivity(`Serving ${bot.guilds.size} Guilds`) //Set Activity
 
 
