@@ -226,7 +226,7 @@ bot.on("ready", () => {
   //Output basic statistics of bot to console
   console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
   logger.info(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`)
-  bot.user.setActivity(`Serving ${bot.users.size} users in ${bot.guilds.size} Guilds`) //Set Activity
+  bot.user.setActivity(`Serving ${bot.users.size} Jeffs in ${bot.guilds.size} Guilds`) //Set Activity
   //bot.user.setActivity(`Performing Maintenance - May be unresponsive`) //Set Maintenence Activity
 
 });
