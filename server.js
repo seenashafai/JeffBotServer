@@ -44,7 +44,7 @@ var modArray = [];
 const prefix = ">";
 
 /* Listener Event: Message Received */
-bot.on('message', message =>  {
+bot.on('message', async message =>  {
 
   /* Command-Argument separator */
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -59,22 +59,13 @@ bot.on('message', message =>  {
   /* Ping Pong Function */
   if (msg === ">" + 'PING') //Checks for presence of prefix
   {
-    message.channel.send('Pong!') //Send 'Pong' in chat channel
+    const m = await message.channel.send("Ping?");
+    m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`)
   }
 
   if (msg === ">" + 'HELP')
   {
     message.channel.send({embed});
-    /*
-    message.channel.send('To begin the work of JeffBot, type >start')
-    message.channel.send('To create Jeffinators, use >jeffinator- only Jeffinators can Jeff others')
-    message.channel.send('Having created Jeffinators, give users the role of Jeffinator with >jeffinate @user')
-    message.channel.send('Armed with the role of Jeffinator, you may Jeff a user like so: >jefficate @user')
-    message.channel.send('Jeffinators may also unJeff Jeffed users, like so: >unjefficate @user')
-    message.channel.send('Regular users may not Jeffinate themselves- please be patient and allow senior Jeffinators to Jeffinate you if they so please')
-    message.channel.send('Jeffed users may not unJeff themselves, and only Jeffinators may Jeff others.')
-    message.channel.send('Basic debugging: if the bot is ignoring the Jeff/Jeffinator roles, test whether the bot has detected the Jeff roles in your server. To test this, use >findjeff and >findjeffinator')
-    */
   }
   
   if (msg === ">" + 'START')
