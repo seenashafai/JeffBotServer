@@ -95,8 +95,6 @@ bot.on('message', async message =>  {
       {
         message.channel.send('Never fear, Jeff is indeed here')
       }
-      console.log(jeffRole.name);
-      console.log(jeffRole.id);
   }
   
   if (msg === ">" + 'FINDJEFFINATOR')
@@ -110,9 +108,6 @@ bot.on('message', async message =>  {
       {
         message.channel.send('Never fear, Jeffinator is indeed here')
       }
-      console.log(jeffinatorRole.name);
-      console.log(jeffinatorRole.id);
-      
   }
   
   if (msg === ">" + 'PURGEJEFF')
@@ -135,9 +130,7 @@ bot.on('message', async message =>  {
           message.reply("Please mention a valid member of this server");
         }
         member.addRole(jeffRole).catch(console.error);
-
         console.log(message.member.username, 'was jefficated');
-        console.log(jeffRole.id)
     }
     else
     {
@@ -153,6 +146,8 @@ bot.on('message', async message =>  {
     {
       //Checks for role (Jeff), Role ID hardcoded and prevents self-unjeffication
       console.log(message.member.user.username, 'tried to unjefficate themself...');
+      message.channel.send("Ha.", message.member.user.username, "tried to unjefficate themself")
+      message.author.send("Resistance is futile")
     }
     else
     {
@@ -161,9 +156,7 @@ bot.on('message', async message =>  {
       if (!member)
         return message.reply("Please mention a valid member of this server");
       member.removeRole(jeffRole).catch(console.error);
-
       console.log(member.user.username,'unjefficated');
-      console.log(jeffRole.id)
     }
   }
 
@@ -178,8 +171,8 @@ bot.on('message', async message =>  {
           message.reply("Please mention a valid member of this server");
         }
         member.addRole(jeffinatorRole).catch(console.error);
-
         console.log(message.member.username, 'was jeffinated');
+        message.channel.send(message.member.username, "has become a Jeffinator")
     }
     else
     {
