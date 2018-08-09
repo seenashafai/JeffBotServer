@@ -176,23 +176,10 @@ bot.on('message', async message =>  {
     }
     else
     {
-      message.channel.send("You do not have permission to use this command")
+      message.channel.send("You must be a Jeffinator to use this command")
     }
   }
-  
-    if (command === 'setmod')
-    {
-        console.log(message.guild.members.get(args[0]));
-        modRole = message.guild.roles.find("name", message.mentions.members.first());
-        if (!modRole)
-        {
-            return message.reply("Please enter a valid role")
-        }
-        modArray.push(modRole);
-        console.log(modArray);
-        let modString = modArray.join(" "); //Turn array into string separated with spaces
-        message.channel.send('Current mod roles:', modString)
-    }
+
 
     /* Delete message and replace with Jeffs */
 
