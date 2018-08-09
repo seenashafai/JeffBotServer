@@ -8,6 +8,12 @@ const date = require('date');
 const fs = require('fs');
 const app = express();
 
+//whoever you are and whatever you are trying to do
+//don't bother trying to add modules untill you've installed them in the console
+//e.g. npm install date
+//e.g. npm install fs
+//otherwise they're not gonna be recognised, and will keep throwing errors at your ass
+
 /* Init log4js */ 
 const log4js = require('log4js');
 log4js.configure({
