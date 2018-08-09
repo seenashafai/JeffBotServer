@@ -130,7 +130,7 @@ bot.on('message', async message =>  {
           message.reply("Please mention a valid member of this server");
         }
         member.addRole(jeffRole).catch(console.error);
-        console.log(message.member.username, 'was jefficated');
+        console.log(member.user.username,'jefficated');
     }
     else
     {
