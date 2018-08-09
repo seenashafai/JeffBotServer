@@ -146,7 +146,7 @@ bot.on('message', async message =>  {
     {
       //Checks for role (Jeff), Role ID hardcoded and prevents self-unjeffication
       console.log(message.member.user.username, 'tried to unjefficate themself...');
-      message.channel.send("Ha.", message.member.user.username, "tried to unjefficate themself")
+      message.channel.send(message.member.user.username, 'tried to unjefficate themself...');
       message.author.send("Resistance is futile")
     }
     else
