@@ -8,24 +8,6 @@ const date = require('date');
 var fs = require('fs');
 const app = express();
 
-const log4js = require('log4js');
-// Configure log4js
-log4js.configure({
-  appenders: [
-    { type: 'console' },
-    { type: 'file', filename: 'logs/console.log', category: 'console'},
-    { type: 'file', filename: 'logs/activeusers.log', category: 'activeusers'},
-    { type: 'file', filename: 'logs/channels.log', category: 'channels'}
-  ]
-});
-
-// set constant log4js variables
-const logcon = log4js.getLogger('console');
-const actcon = log4js.getLogger('activeusers');
-const chancon = log4js.getLogger('channels');
-
-const logger = log4js.getLogger('JeffBot');
-
 /* Initialise discord.js Calls */
 const Discord = require('discord.js'); //Calling discord.js Package
 const bot = new Discord.Client(); //Initialise discord bot instance
@@ -75,13 +57,11 @@ bot.on('message', async message =>  {
   {
     const m = await message.channel.send("Ping?");
     m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`)
-    logcon.info('Pongged User');
     var timenow = Date.now()
-    fs.appendFile("public/log.txt",timenow + " Pongged user "+ message.author.username +'(' + message.author + ')\n'), function(err) {
-    if(err) {
-        return console.log(err);
-    }
-//what the fuck are you doing, dont use .log, thats rarted. happy? u fucked it
+    fs.appendFile("public/log.log",timenow + " Pongged user "+ message.author.username +'(' + message.author + ')\n'), function(err) {
+      if(err) {
+          return console.log(err);
+      }
     }
   }
     
@@ -89,7 +69,11 @@ bot.on('message', async message =>  {
   {
     message.channel.send({embed});
   }
-  
+fs.appendFile("public/log.log",timenow + " Helpped user "+ message.author.username +'(' + message.author + ')\n'), function(err) {
+      if(err) {
+          return console.log(err);
+      }
+    }  
   if (msg === ">" + 'START')
   {
       message.guild.createRole({name:'Jeff'});
@@ -98,13 +82,19 @@ bot.on('message', async message =>  {
       message.channel.send('Please now use >jeffinate to begin the rise of the Jeffinators')
   }
 
+      fs.appendFile("public/log.log",timenow + " Initialized Jeff on server "+ message.guild.name + '\n'), function(err) {
+        if(err) {
+            return console.log(err);
+        }
+      }
   if (msg === ">" + 'JEFFINATOR')
   {
       message.guild.createRole({name:'Jeffinator'});
       message.channel.send('It is done');
       jeffinatorRole = message.guild.roles.find("name", "Jeffinator")
   }
-  
+
+        
   
   if (msg === ">" + 'FINDJEFF')
   {
@@ -118,7 +108,12 @@ bot.on('message', async message =>  {
         message.channel.send('Never fear, Jeff is indeed here')
       }
   }
-  
+
+      fs.appendFile("public/log.log",timenow + " Jeff was searched for by user "+ message.author.username +'(' + message.author + ')\n'), function(err) {
+      if(err) {
+          return console.log(err);
+      }
+    }  
   if (msg === ">" + 'FINDJEFFINATOR')
   {
       jeffinatorRole = message.guild.roles.find("name", "Jeffinator")
@@ -131,15 +126,23 @@ bot.on('message', async message =>  {
         message.channel.send('Never fear, Jeffinator is indeed here')
       }
   }
-  
+
+        fs.appendFile("public/log.log",timenow + " Jeffinator was serached for by user "+ message.author.username +'(' + message.author + ')\n'), function(err) {
+          if(err) {
+              return console.log(err);
+          }
+        }  
   if (msg === ">" + 'PURGEJEFF')
   {
       console.log('purgejeff');
       message.channel.send('Execute order Jeffty-Jeff')
       message.guild.roles.get(jeffRole.id).delete()
-      message.channel.send('It is done my lord')          
-  }
-
+      message.channel.send('It is done my lord')      
+      fs.appendFile("public/log.log",timenow + " Jeff was purged by user "+ message.author.username +'(' + message.author + ')\n'), function(err) {
+      if(err) {
+          return console.log(err);
+      }
+    }
   if (command === 'jefficate')
   {
     jeffinatorRole = message.guild.roles.find("name", "Jeffinator")
