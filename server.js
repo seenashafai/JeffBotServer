@@ -9,7 +9,7 @@ var fs = require('fs');
 const app = express();
 
 
-/* Init log4js */ 
+/* Init log4js 
 
 const log4js = require('log4js');
 log4js.configure({
@@ -17,11 +17,13 @@ log4js.configure({
   categories: { default: { appenders: ['jeffBot'], level: 'error' } }
 });
 
-const logger = log4js.getLogger('jeffBot');
+//const logger = log4js.getLogger('jeffBot');
+
+*/
 
 /* Init blackhole-logger */ 
 const mkdirp = require("mkdirp-sync");
-const Logger = require("path/to/file")(__dirname + "/logs.txt");
+const logger = require('discord-blackhole.logger');
 
 
 
