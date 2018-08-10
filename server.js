@@ -8,9 +8,13 @@ const date = require('date');
 var fs = require('fs');
 const app = express();
 
+const log4js = require('log4js');
+log4js.configure({
+  appenders: { JeffBot: { type: 'file', filename: 'testlog.txt' } },
+  categories: { default: { appenders: ['JeffBot'], level: 'error' } }
+});
 
-
-
+const logger = log4js.getLogger('JeffBot');
 
 /* Initialise discord.js Calls */
 const Discord = require('discord.js'); //Calling discord.js Package
@@ -61,15 +65,12 @@ bot.on('message', async message =>  {
   {
     const m = await message.channel.send("Ping?");
     m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`)
+    logger.trace('Pongged');
     //logger.info(`Pongged User`)
     var timenow = Date.now()
-    fs.appendFile("public/log.txt",timenow + " Pongged user "+ message.author + '\n', function(err) {
-    if(err) {
-        return console.log(err);
-    }//what the fuck are you doing, dont use .log, thats rarted
+    fs.appendFile("public/log.txt",timenow + " Pongged user "+ message.author + '\n')//what the fuck are you doing, dont use .log, thats rarted
 
-    console.log("The file was saved!");
-}); 
+    console.log("The file was saved!"); 
   }
   
     
