@@ -5,7 +5,7 @@
 const http = require('http');
 const express = require('express');
 const date = require('date');
-const fs = require('fs');
+var fs = require('fs');
 const app = express();
 
 
@@ -58,7 +58,6 @@ const prefix = ">";
 /* Listener Event: Message Received */
 bot.on('message', async message =>  {
   
-  var stream = fs.createWriteStream('log.txt');
 
   /* Command-Argument separator */
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -75,9 +74,7 @@ bot.on('message', async message =>  {
   {
     const m = await message.channel.send("Ping?");
     m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`)
-    stream.write("test");
-    stream.end;
-    console.log('test');
+    fs.appendFile('log.txt', 'test');
   }
 
   if (msg === ">" + 'HELP')
