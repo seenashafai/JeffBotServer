@@ -4,13 +4,12 @@
   "description": "A simple Discord bot coded with Node JS called Jeff",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js"a
   },
   "dependencies": {
     "date": "^1.0.2",
     "discord.js": "^11.3.2",
     "express": "^4.16.3",
-    "fs": "^0.0.1-security",
     "log4js": "^3.0.4"
   },
   "engines": {
