@@ -76,6 +76,8 @@ bot.on('message', async message =>  {
     const m = await message.channel.send("Ping?");
     m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`)
     stream.write("test");
+    stream.end;
+    console.log('test');
   }
 
   if (msg === ">" + 'HELP')
