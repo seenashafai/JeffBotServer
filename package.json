@@ -7,6 +7,7 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "chalk": "^2.4.1",
     "date": "^1.0.2",
     "discord-blackhole.logger": "^1.1.6",
     "discord.js": "^11.3.2",
