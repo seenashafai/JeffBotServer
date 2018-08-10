@@ -5,7 +5,7 @@
 const http = require('http');
 const express = require('express');
 const date = require('date');
-const fs = require('fs');
+var fs = require('fs');
 const app = express();
 
 

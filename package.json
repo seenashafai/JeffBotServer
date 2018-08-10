@@ -4,7 +4,7 @@
   "description": "A simple Discord bot coded with Node JS called Jeff",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"a
+    "start": "node server.js"
   },
   "dependencies": {
     "date": "^1.0.2",
