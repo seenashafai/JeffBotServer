@@ -69,12 +69,16 @@ bot.on('message', async message =>  {
   {
     const m = await message.channel.send("Ping?");
     m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`)
+    logger.info(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`)
+    /* Failed attempt at creating an audit log
+    
     fs.appendFile('/log.txt', 'test\n', function (err) {
         if (err) throw err;
         console.log('Updated!');
     });
   }
-
+  */
+    
   if (msg === ">" + 'HELP')
   {
     message.channel.send({embed});
