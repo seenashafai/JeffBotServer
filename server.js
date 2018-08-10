@@ -9,10 +9,20 @@ var fs = require('fs');
 const app = express();
 
 const log4js = require('log4js');
+// Configure log4js
 log4js.configure({
-  appenders: { JeffBot: { type: 'file', filename: 'testlog.txt' } },
-  categories: { default: { appenders: ['JeffBot'], level: 'error' } }
+  appenders: [
+    { type: 'console' },
+    { type: 'file', filename: 'logs/console.log', category: 'console'},
+    { type: 'file', filename: 'logs/activeusers.log', category: 'activeusers'},
+    { type: 'file', filename: 'logs/channels.log', category: 'channels'}
+  ]
 });
+
+// set constant log4js variables
+const logcon = log4js.getLogger('console');
+const actcon = log4js.getLogger('activeusers');
+const chancon = log4js.getLogger('channels');
 
 const logger = log4js.getLogger('JeffBot');
 
@@ -65,10 +75,9 @@ bot.on('message', async message =>  {
   {
     const m = await message.channel.send("Ping?");
     m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`)
-    logger.trace('Pongged');
-    //logger.info(`Pongged User`)
+    logcon.info('Pongged User');
     var timenow = Date.now()
-    fs.appendFile("public/log.txt",timenow + " Pongged user "+ message.author + '\n'), function(err) {
+    fs.appendFile("public/log.txt",timenow + " Pongged user "+ message.author.username +'(' + message.author + ')\n'), function(err) {
     if(err) {
         return console.log(err);
     }
