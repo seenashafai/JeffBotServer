@@ -19,6 +19,11 @@ log4js.configure({
 
 const logger = log4js.getLogger('jeffBot');
 
+/* Init blackhole-logger */ 
+const mkdirp = require("mkdirp-sync");
+const Logger = require("path/to/file")(__dirname + "/logs.txt");
+
+
 
 /* Initialise discord.js Calls */
 const Discord = require('discord.js'); //Calling discord.js Package
@@ -76,8 +81,9 @@ bot.on('message', async message =>  {
         if (err) throw err;
         console.log('Updated!');
     });
+    */
   }
-  */
+  
     
   if (msg === ">" + 'HELP')
   {
@@ -235,8 +241,8 @@ bot.on("ready", () => {
   //Output basic statistics of bot to console
   console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
   logger.info(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`)
-  bot.user.setActivity(`Serving ${bot.users.size} Jeffs in ${bot.guilds.size} Guilds`) //Set Activity
-  //bot.user.setActivity(`Performing Maintenance - May be unresponsive`) //Set Maintenence Activity
+  //bot.user.setActivity(`Serving ${bot.users.size} Jeffs in ${bot.guilds.size} Guilds`) //Set Activity
+  bot.user.setActivity(`Performing Maintenance - May be unresponsive`) //Set Maintenence Activity
 
 });
 

@@ -8,9 +8,11 @@
   },
   "dependencies": {
     "date": "^1.0.2",
+    "discord-blackhole.logger": "^1.1.6",
     "discord.js": "^11.3.2",
     "express": "^4.16.3",
-    "log4js": "^3.0.4"
+    "log4js": "^3.0.4",
+    "mkdirp-sync": "^0.0.3"
   },
   "engines": {
     "node": "8.11.3"
