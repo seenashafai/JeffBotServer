@@ -10,6 +10,7 @@ const app = express();
 
 
 /* Init log4js */ 
+/*
 const log4js = require('log4js');
 log4js.configure({
   appenders: { jeffBot: { type: 'file', filename: 'jeffBot.log' } },
@@ -17,6 +18,7 @@ log4js.configure({
 });
 
 const logger = log4js.getLogger('jeffBot');
+*/
 
 /* Initialise discord.js Calls */
 const Discord = require('discord.js'); //Calling discord.js Package
@@ -33,14 +35,7 @@ const embed = new Discord.RichEmbed()
   .addField("How to use JeffBot", ">jefficate Jeff someone \n>unjefficate to unjeff someone \n>jeffinate to give someone the ability to jefficate others")
   .addBlankField()
   .addField("Basic Debugging", "if the bot is ignoring the Jeff/Jeffinator roles, test whether the bot has detected the Jeff roles in your server. To test this, use >findjeff and >findjeffinator")
-  /*
-   * Inline fields may not display as inline if the thumbnail and/or image is too big.
-   */
-
-
-  /*
-   * Blank field, useful to create some space.
-   */
+ 
   .addBlankField()
   .setFooter("Thank you for using Jeffbot. Have a Jefftastic time!");
 
@@ -74,7 +69,7 @@ bot.on('message', async message =>  {
   {
     const m = await message.channel.send("Ping?");
     m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`)
-    fs.appendFile('log.txt', 'test', function (err) {
+    fs.appendFile('/log.txt', 'test\n', function (err) {
         if (err) throw err;
         console.log('Updated!');
     });
@@ -235,7 +230,7 @@ bot.on("ready", () => {
 
   //Output basic statistics of bot to console
   console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
-  logger.info(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`)
+  //logger.info(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`)
   bot.user.setActivity(`Serving ${bot.users.size} Jeffs in ${bot.guilds.size} Guilds`) //Set Activity
   //bot.user.setActivity(`Performing Maintenance - May be unresponsive`) //Set Maintenence Activity
 
