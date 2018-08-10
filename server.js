@@ -57,7 +57,7 @@ bot.on('message', async message => {
             const m = await message.channel.send("Ping?");
             m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
             var timenow = Date.now();
-            fs.appendFile("public/log.log", timenow + " Pongged user " + message.author.username + '(' + message.author + ')\n'), function (err) {
+            fs.appendFile("public/log.log", timenow + " Pongged user " + message.author.username + '(' + message.author + ') on server '+ message.guild.name + '\n'), function (err) {
                 if (err) {
                     return console.log(err);
                 }
@@ -68,7 +68,7 @@ bot.on('message', async message => {
             message.channel.send({embed});
         }
         var timenow = Date.now();
-        fs.appendFile("public/log.log", timenow + " Helped user " + message.author.username + '(' + message.author + ')\n'), function (err) {
+        fs.appendFile("public/log.log", timenow + " Helped user " + message.author.username + '(' + message.author +') on server '+ message.guild.name +  ')\n'), function (err) {
             if (err) {
                 return console.log(err);
             }
