@@ -68,9 +68,11 @@ bot.on('message', async message =>  {
     logger.trace('Pongged');
     //logger.info(`Pongged User`)
     var timenow = Date.now()
-    fs.appendFile("public/log.txt",timenow + " Pongged user "+ message.author + '\n')//what the fuck are you doing, dont use .log, thats rarted
-
-    console.log("The file was saved!"); 
+    fs.appendFile("public/log.txt",timenow + " Pongged user "+ message.author + '\n'), function(err) {
+    if(err) {
+        return console.log(err);
+    }
+//what the fuck are you doing, dont use .log, thats rarted. happy?
   }
   
     
