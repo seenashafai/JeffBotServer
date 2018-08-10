@@ -102,7 +102,7 @@ bot.on('message', async message => {
             }
         }
         var timenow = Date.now();
-        fs.appendFile("public/log.log", timenow + " Jeff was searched for by user " + message.author.username + '(' + message.author + ')\n'), function (err) {
+        fs.appendFile("public/log.log", timenow + " Jeff was searched for by user " + message.author.username + '(' + message.author + ') on server '+ message.guild.name + '\n'), function (err) {
             if (err) {
                 return console.log(err);
             }
@@ -117,7 +117,7 @@ bot.on('message', async message => {
             }
         }
         var timenow = Date.now();
-        fs.appendFile("public/log.log", timenow + " Jeffinator was serached for by user " + message.author.username + '(' + message.author + ')\n'), function (err) {
+        fs.appendFile("public/log.log", timenow + " Jeffinator was serached for by user " + message.author.username + '(' + message.author +') on server '+ message.guild.name +  '\n'), function (err) {
             if (err) {
                 return console.log(err);
             }
@@ -128,7 +128,7 @@ bot.on('message', async message => {
             message.guild.roles.get(jeffRole.id).delete();
             message.channel.send('It is done my lord');
             var timenow = Date.now();
-            fs.appendFile("public/log.log", timenow + " Jeff was purged by user " + message.author.username + '(' + message.author + ')\n'), function (err) {
+            fs.appendFile("public/log.log", timenow + " Jeff was purged by user " + message.author.username + '(' + message.author + ') on server '+ message.guild.name + '\n'), function (err) {
                 if (err) {
                     return console.log(err);
                 }
