@@ -62,10 +62,11 @@ bot.on('message', async message =>  {
     const m = await message.channel.send("Ping?");
     m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`)
     //logger.info(`Pongged User`)
-    fs.writeFile("/public/log.txt", "Pong!", function(err) {
+    var timenow = Date.now()
+    fs.appendFile("public/log.txt",timenow + " Pongged user "+ message.author + '\n', function(err) {
     if(err) {
         return console.log(err);
-    }
+    }//what the fuck are you doing, dont use .log, thats rarted
 
     console.log("The file was saved!");
 }); 
