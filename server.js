@@ -9,21 +9,6 @@ var fs = require('fs');
 const app = express();
 
 
-/* Init log4js 
-
-const log4js = require('log4js');
-log4js.configure({
-  appenders: { jeffBot: { type: 'file', filename: 'log.txt' } },
-  categories: { default: { appenders: ['jeffBot'], level: 'error' } }
-});
-
-//const logger = log4js.getLogger('jeffBot');
-
-*/
-
-/* Init blackhole-logger */ 
-const logger = require("path/to/file")(__dirname + "/log.txt");
-
 
 
 
@@ -76,14 +61,14 @@ bot.on('message', async message =>  {
   {
     const m = await message.channel.send("Ping?");
     m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`)
-    logger.info(`Pongged User`)
-    /* Failed attempt at creating an audit log
-    
-    fs.appendFile('/log.txt', 'test\n', function (err) {
-        if (err) throw err;
-        console.log('Updated!');
-    });
-    */
+    //logger.info(`Pongged User`)
+    fs.writeFile("/public/log.txt", "Pong!", function(err) {
+    if(err) {
+        return console.log(err);
+    }
+
+    console.log("The file was saved!");
+}); 
   }
   
     
@@ -242,7 +227,7 @@ bot.on("ready", () => {
 
   //Output basic statistics of bot to console
   console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
-  logger.info(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`)
+  //logger.info(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`)
   //bot.user.setActivity(`Serving ${bot.users.size} Jeffs in ${bot.guilds.size} Guilds`) //Set Activity
   bot.user.setActivity(`Performing Maintenance - May be unresponsive`) //Set Maintenence Activity
 
