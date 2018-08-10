@@ -75,12 +75,7 @@ bot.on('message', async message =>  {
   {
     const m = await message.channel.send("Ping?");
     m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`)
-    stream.once('open', function (fd) {
-            stream.write( date.now() + "Pongged user " + message.author);
-            console.log(date.now() + "Pongged user " + message.author);
-            message.channel.send('trace')
-            stream.end();
-        })
+    stream.write("test");
   }
 
   if (msg === ">" + 'HELP')
