@@ -72,9 +72,9 @@ bot.on('message', async message =>  {
     if(err) {
         return console.log(err);
     }
-//what the fuck are you doing, dont use .log, thats rarted. happy?
+//what the fuck are you doing, dont use .log, thats rarted. happy? u fucked it
+    }
   }
-  
     
   if (msg === ">" + 'HELP')
   {
