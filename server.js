@@ -5,7 +5,7 @@
 const http = require('http');
 const express = require('express');
 const date = require('date');
-var fs = require('fs');
+const fs = require('fs');
 const app = express();
 
 
@@ -74,7 +74,10 @@ bot.on('message', async message =>  {
   {
     const m = await message.channel.send("Ping?");
     m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`)
-    fs.appendFile('log.txt', 'test');
+    fs.appendFile('log.txt', 'test', function (err) {
+        if (err) throw err;
+        console.log('Updated!');
+    });
   }
 
   if (msg === ">" + 'HELP')
