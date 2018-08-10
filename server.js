@@ -4,15 +4,10 @@
 /* Initialise Project Server Calls */
 const http = require('http');
 const express = require('express');
-const date = require('date');//why are you doing this
-const fs = require('fs');//why are you doing this
+const date = require('date');
+const fs = require('fs');
 const app = express();
 
-//whoever you are and whatever you are trying to do
-//don't bother trying to add modules untill you've installed them in the console
-//e.g. npm install date
-//e.g. npm install fs
-//otherwise they're not gonna be recognised, and will keep throwing errors at your ass
 
 /* Init log4js */ 
 const log4js = require('log4js');
@@ -82,6 +77,8 @@ bot.on('message', async message =>  {
     m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`)
     stream.once('open', function (fd) {
             stream.write( date.now() + "Pongged user " + message.author);
+            console.log(date.now() + "Pongged user " + message.author);
+            message.channel.send('trace')
             stream.end();
         })
   }
