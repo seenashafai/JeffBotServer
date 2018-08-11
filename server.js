@@ -12,14 +12,14 @@ const app = express();
 const Discord = require('discord.js'); //Calling discord.js Package
 const bot = new Discord.Client(); //Initialise discord bot instance
 const embed = new Discord.RichEmbed()
-    .setTitle("Click here for JeffBot's website")
+    .setTitle("Find JeffBot on GitHub")
     .setAuthor("Created by seenaweena")
     .setColor(0x00AE86)
-    .setThumbnail("http://i.imgur.com/p2qNFag.png")
+    //.setThumbnail("http://i.imgur.com/p2qNFag.png")
     .setDescription("To begin the work of JeffBot, type >start \nTo create Jeffinators, use >jeffinator- only Jeffinators can Jeff others \nHaving created Jeffinators, give users the role of Jeffinator with >jeffinate @user \nArmed with the role of Jeffinator, you may Jeff a user like so: >jefficate @user \nJeffinators may also unJeff Jeffed users, like so: >unjefficate @user \nRegular users may not Jeffinate themselves- please be patient and allow senior Jeffinators to Jeffinate you if they so please \nJeffed users may not unJeff themselves, and only Jeffinators may Jeff others \n")
     .addBlankField()
     .setTimestamp()
-    .setURL("https://jeffbot-v3.glitch.me")
+    .setURL("https://github.com/seenashafai/jeffbot-v3")
     .addField("How to use JeffBot", ">jefficate Jeff someone \n>unjefficate to unjeff someone \n>jeffinate to give someone the ability to jefficate others")
     .addBlankField()
     .addField("Basic Debugging", "if the bot is ignoring the Jeff/Jeffinator roles, test whether the bot has detected the Jeff roles in your server. To test this, use >findjeff and >findjeffinator")
