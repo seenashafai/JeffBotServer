@@ -68,7 +68,7 @@ bot.on('message', async message => {
         {
           message.channel.send({embed});
           var timenow = Date.now();
-          fs.appendFile("public/log.log", timenow + " Helped user " + message.author.username + '(' + message.author +') on server '+ message.guild.name +  ')\n', function (err) {
+          fs.appendFile("public/log.log", timenow + " Helped user " + message.author.username + '(' + message.author +') on server '+ message.guild.name +  '\n', function (err) {
           if (err) {
             return console.log(err);
             }
