@@ -57,34 +57,38 @@ bot.on('message', async message => {
             const m = await message.channel.send("Ping?");
             m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
             var timenow = Date.now();
-            fs.appendFile("public/log.log", timenow + " Pongged user " + message.author.username + '(' + message.author + ') on server '+ message.guild.name + '\n'), function (err) {
+            fs.appendFile("public/log.log", timenow + " Pongged user " + message.author.username + '(' + message.author + ') on server '+ message.guild.name + '\n', function (err) {
                 if (err) {
                     return console.log(err);
                 }
-            }
-        }
-
-        if (msg === ">" + 'HELP') {
-            message.channel.send({embed});
-        }
-        var timenow = Date.now();
-        fs.appendFile("public/log.log", timenow + " Helped user " + message.author.username + '(' + message.author +') on server '+ message.guild.name +  ')\n'), function (err) {
-            if (err) {
-                return console.log(err);
-            }
+            })
         };
-        if (msg === ">" + 'START') {
+
+        if (msg === ">" + 'HELP') 
+        {
+          message.channel.send({embed});
+          var timenow = Date.now();
+          fs.appendFile("public/log.log", timenow + " Helped user " + message.author.username + '(' + message.author +') on server '+ message.guild.name +  ')\n', function (err) {
+          if (err) {
+            return console.log(err);
+            }
+          })
+        };
+       
+        if (msg === ">" + 'START') 
+        {
             message.guild.createRole({name: 'Jeff'});
             message.channel.send('It is done');
             jeffRole = message.guild.roles.find("name", "Jeff");
             message.channel.send('Please now use >jeffinate to begin the rise of the Jeffinators')
-        }
-        var timenow = Date.now();
-        fs.appendFile("public/log.log", timenow + " Initialized Jeff on server " + message.guild.name + '\n'), function (err) {
+            var timenow = Date.now();
+            fs.appendFile("public/log.log", timenow + " Initialized Jeff on server " + message.guild.name + '\n', function (err) {
             if (err) {
-                return console.log(err);
+              return console.log(err);
             }
+          })
         };
+                          
         if (msg === ">" + 'JEFFINATOR') {
             message.guild.createRole({name: 'Jeffinator'});
             message.channel.send('It is done');
@@ -92,7 +96,8 @@ bot.on('message', async message => {
         }
 
 
-        if (msg === ">" + 'FINDJEFF') {
+        if (msg === ">" + 'FINDJEFF') 
+        {
             jeffRole = message.guild.roles.find("name", "Jeff");
             if (!jeffRole) {
                 message.channel.send('JeffBot cannot find his Jeff role. Please delete any roles called Jeff and then run >start')
@@ -100,13 +105,14 @@ bot.on('message', async message => {
             else {
                 message.channel.send('Never fear, Jeff is indeed here')
             }
-        }
-        var timenow = Date.now();
-        fs.appendFile("public/log.log", timenow + " Jeff was searched for by user " + message.author.username + '(' + message.author + ') on server '+ message.guild.name + '\n'), function (err) {
+            var timenow = Date.now();
+            fs.appendFile("public/log.log", timenow + " Jeff was searched for by user " + message.author.username + '(' + message.author + ') on server '+ message.guild.name + '\n'), function (err) {
             if (err) {
                 return console.log(err);
             }
-        };
+          };
+        }
+          
         if (msg === ">" + 'FINDJEFFINATOR') {
             jeffinatorRole = message.guild.roles.find("name", "Jeffinator");
             if (!jeffRole) {
