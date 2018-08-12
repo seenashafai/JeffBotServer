@@ -5,8 +5,8 @@
 const http = require('http');
 const express = require('express');
 const date = require('date');
-var fs = require('fs');
 const app = express();
+const fs = require('fs')
 
 /* Initialise discord.js Calls */
 const Discord = require('discord.js'); //Calling discord.js Package
