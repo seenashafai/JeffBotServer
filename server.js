@@ -31,8 +31,6 @@ const embed = new Discord.RichEmbed()
 //global variables
 var jeffRole = '';
 var jeffinatorRole = '';
-var modRole = '';
-var modArray = [];
 
 //global constants
 const prefix = ">";
