@@ -34,6 +34,7 @@ var jeffinatorRole = '';
 
 //global constants
 const prefix = ">";
+const jeff = "jeff"; //placeh
 
 /* Listener Event: Message Received */
 bot.on('message', async message => {
