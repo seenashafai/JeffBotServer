@@ -34,7 +34,7 @@ var jeffinatorRole = '';
 
 //global constants
 const prefix = ">";
-const jeff = "jeff"; //placeholder: remove and replace periodically to stop things from being deleted from inactivity?
+const jeff = "jef"; //placeholder: remove and replace periodically to stop things from being deleted from inactivity?
 
 /* Listener Event: Message Received */
 bot.on('message', async message => {
