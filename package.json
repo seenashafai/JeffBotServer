@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "prestart": "npm install && tsc"
+    "prestart": "npm install"
   },
   "dependencies": {
     "date": "^1.0.2",
