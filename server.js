@@ -245,7 +245,7 @@ bot.on("ready", () => {
 //bot.login(process.env.TOKEN); //Bot login with token defined in config.js
 
 if(!process.env["discord_key"]) console.log("no key found")
-client.login(process.env["discord_key"])
+bot.login(process.env["discord_key"])
 
 /* Uptime pinger (Now using UptimeRobot)*/
 /*
