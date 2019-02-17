@@ -226,6 +226,7 @@ bot.on('message', async message => {
         }
     
         if(msg.content.toLowerCase().match(/[aeiou]/)) {
+            console.log('oob detected', msg.content)
         msg.channel.send(msg.content
             .replace(/[aeiou]/ig,'oob')
           
