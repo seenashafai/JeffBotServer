@@ -237,7 +237,7 @@ bot.on('message', async message => {
 bot.on("ready", () => {
 
     //Output basic statistics of bot to console
-    console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`);
+    console.log(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds, oobing activated.`);
     //logger.info(`Bot has started, with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`)
     bot.user.setActivity(`${bot.users.size} Jeffs in ${bot.guilds.size} Guilds`, {type: "WATCHING"}) //Set Activity
     //bot.user.setActivity(`Performing Maintenance - May be unresponsive`) //Set Maintenence Activity
