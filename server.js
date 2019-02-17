@@ -245,7 +245,7 @@ bot.on('message', async message => {
 
         /* Delete message and replace with Jeffs */
 
-        if (!jeffRole) || (!oobRole) return;
+        if (!jeffRole) return;
         if (message.member.roles.has(jeffRole.id)) //Checks for roleID of role 'Jeff' initialised on >Start
         {
             /*  Handling original user message */
@@ -269,6 +269,7 @@ bot.on('message', async message => {
             message.author.send('You just got Jeffed! Tag your friends to Jeff them also!') //PM author of original message
         }
     
+        if (!oobRole) return;
         if (message.member.roles.has(oobRole.id)) //Checks for roleID of role 'Jeff' initialised on >Start
         {
             /*  Handling original user message */
