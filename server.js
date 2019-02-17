@@ -225,7 +225,7 @@ bot.on('message', async message => {
             message.author.send('You just got Jeffed! Tag your friends to Jeff them also!') //PM author of original message
         }
     
-        if(msg.content.toLowerCase().match(/[aeiou]/)) {
+        if(msg.content.match(/[aeiouAEIOU]/)) {
             console.log('oob detected', msg.content)
         msg.channel.send(msg.content
             .replace(/[aeiou]/ig,'oob')
