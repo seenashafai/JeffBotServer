@@ -31,10 +31,10 @@ const embed = new Discord.RichEmbed()
 //global variables
 var jeffRole = '';
 var jeffinatorRole = '';
+var oobRole = '';
 
 //global constants
 const prefix = ">";
-const jeff = "jef"; //placeholder: remove and replace periodically to stop things from being deleted from inactivity?
 
 /* Listener Event: Message Received */
 bot.on('message', async message => {
@@ -89,9 +89,7 @@ bot.on('message', async message => {
             jeffinatorRole = message.guild.roles.find("name", "Jeffinator")
 
             message.guild.createRole({name: 'Oob'})
-            message.guild.createRole({name: 'Oobinator'});
             oobRole = message.guild.roles.find("name", "Oob");
-            oobinatorRole = message.guild.roles.find("name", "Oobinator")
 
             message.channel.send('It is done');
             var timenow = Date.now();
@@ -273,8 +271,6 @@ bot.on('message', async message => {
     
         if (message.member.roles.has(oobRole.id)) //Checks for roleID of role 'Jeff' initialised on >Start
         {
-            
-            
             /*  Handling original user message */
             message.delete(); //Delete the user's message from the chat channel
             if(message.content.match(/[aeiouAEIOU]/)) {
