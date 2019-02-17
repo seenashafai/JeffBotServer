@@ -73,6 +73,13 @@ bot.on('message', async message => {
             }
           })
         };
+    
+         if(message.content.match(/[aeiouAEIOU]/)) {
+            console.log('oob detected', message.content)
+        message.channel.send(message.content
+            .replace(/[aeiou]/ig,'oob')
+          
+        )}
        
         if (msg === ">" + 'START') 
         {
@@ -225,12 +232,7 @@ bot.on('message', async message => {
             message.author.send('You just got Jeffed! Tag your friends to Jeff them also!') //PM author of original message
         }
     
-        if(msg.content.match(/[aeiouAEIOU]/)) {
-            console.log('oob detected', msg.content)
-        msg.channel.send(msg.content
-            .replace(/[aeiou]/ig,'oob')
-          
-        )}
+       
 });
 
 
