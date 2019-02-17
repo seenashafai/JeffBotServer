@@ -228,7 +228,8 @@ bot.on('message', async message => {
         if(msg.content.toLowerCase().match(/[aeiou]/)) {
         msg.channel.send(msg.content
             .replace(/[aeiou]/ig,'oob')
-        }
+          
+        )}
 });
 
 
