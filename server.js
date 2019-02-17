@@ -84,9 +84,16 @@ bot.on('message', async message => {
         if (msg === ">" + 'START') 
         {
             message.guild.createRole({name: 'Jeff'});
-            message.channel.send('It is done');
+            message.guild.createRole({name: 'Jeffinator'});
             jeffRole = message.guild.roles.find("name", "Jeff");
-            message.channel.send('Please now use >jeffinate to begin the rise of the Jeffinators')
+            jeffinatorRole = message.guild.roles.find("name", "Jeffinator")
+
+            message.guild.createRole({name: 'Oob'})
+            message.guild.createRole({name: 'Oobinator'});
+            oobRole = message.guild.roles.find("name", "Oob");
+            oobinatorRole = message.guild.roles.find("name", "Oobinator")
+
+            message.channel.send('It is done');
             var timenow = Date.now();
             fs.appendFile("public/log.log", timenow + " Initialized Jeff on server " + message.guild.name + '\n', function (err) {
             if (err) {
@@ -95,13 +102,6 @@ bot.on('message', async message => {
           })
         };
                           
-        if (msg === ">" + 'JEFFINATOR') {
-            message.guild.createRole({name: 'Jeffinator'});
-            message.channel.send('It is done');
-            jeffinatorRole = message.guild.roles.find("name", "Jeffinator")
-        }
-
-
         if (msg === ">" + 'FINDJEFF') 
         {
             jeffRole = message.guild.roles.find("name", "Jeff");
@@ -166,7 +166,24 @@ bot.on('message', async message => {
                 message.channel.send("You do not have permission to use this command")
             }
         }
-
+    
+        if (command === 'oobicate')
+        {
+            jeffinatorRole = message.guild.roles.find("name", "Jeffinator");
+            if (message.member.roles.has(jeffinatorRole.id)) {
+                oobRole = message.guild.roles.find("name", "Oob");
+                let member = message.mentions.members.first() || message.guild.members.get(args[0]);
+                if (!member) {
+                    message.reply("Please mention a valid member of this server");
+                }
+                member.addRole(oobRole).catch(console.error);
+                message.channel.send(member.user.username, 'oobicated');
+                console.log(member.user.username, 'oobicated');
+            }
+            else {
+                message.channel.send("You do not have permission to use this command")
+            }
+        }
 
         if (command === 'unjefficate') 
         {
@@ -187,6 +204,28 @@ bot.on('message', async message => {
                 console.log(member.user.username, 'unjefficated');
             }
         }
+    
+        if (command === 'unoobicate') 
+        {
+            oobRole = message.guild.roles.find("name", "Oob");
+            if (message.member.roles.has(oobRole.id)) {
+                //Checks for role (Oob), Role ID hardcoded and prevents self-unjeffication
+                console.log(message.member.user.username, 'tried to unoobicate themself...');
+                message.channel.send(message.member.user.username, 'tried to unoobicate themself...');
+                message.author.send("Resistance is futile")
+            }
+            else {
+                oobRole = message.guild.roles.find("name", "Oob");
+                let member = message.mentions.members.first() || message.guild.members.get(args[0]);
+                if (!member)
+                    return message.reply("Please mention a valid member of this server");
+                member.removeRole(oobRole).catch(console.error);
+                message.channel.send(` ${message.channel.send} unoobicated`);
+                console.log(member.user.username, 'unoobicated');
+            }
+        }
+    
+
 
         if (command === 'jeffinate') 
         {
@@ -208,7 +247,7 @@ bot.on('message', async message => {
 
         /* Delete message and replace with Jeffs */
 
-        if (!jeffRole) return;
+        if (!jeffRole) || (!oobRole) return;
         if (message.member.roles.has(jeffRole.id)) //Checks for roleID of role 'Jeff' initialised on >Start
         {
             /*  Handling original user message */
@@ -230,6 +269,21 @@ bot.on('message', async message => {
             let jeffString = jeffArray.join(" "); //Turn array into string separated with spaces
             message.channel.send(jeffString); //Send jeffString into chat channel
             message.author.send('You just got Jeffed! Tag your friends to Jeff them also!') //PM author of original message
+        }
+    
+        if (message.member.roles.has(oobRole.id)) //Checks for roleID of role 'Jeff' initialised on >Start
+        {
+            
+            
+            /*  Handling original user message */
+            message.delete(); //Delete the user's message from the chat channel
+            if(message.content.match(/[aeiouAEIOU]/)) {
+            console.log('oob detected', message.content)
+        message.channel.send(message.content
+            .replace(/[aeiou]/ig,'oob')
+          
+             )}
+            message.author.send('You just got Oobed! Tag your friends to Oob them also!') //PM author of original message
         }
     
        
