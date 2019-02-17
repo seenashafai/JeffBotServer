@@ -225,18 +225,11 @@ bot.on('message', async message => {
             message.author.send('You just got Jeffed! Tag your friends to Jeff them also!') //PM author of original message
         }
     
-        if(msg.content.toLowerCase().match('\\ba', 'g') || msg.content.toLowerCase().match('\\be', 'g') || msg.content.toLowerCase().match('\\bi', 'g') || msg.content.toLowerCase().match('\\bo', 'g')|| msg.content.toLowerCase().match('\\bu', 'g')) {
+        if(msg.content.toLowerCase().match(/[aeiou]/)) {
         msg.channel.send(msg.content
-            .replace(new RegExp('\\b[fF][uU][cC][kK]', 'g'), 'oob')
-            .replace(new RegExp('\\b[hH][eE][lL][lL]\\b', 'g'), 'oob')
-            .replace(new RegExp('\\b[sS][hH][iI][tT]', 'g'), 'oob')
-            +"*")
-    }
-    
-        
-
+            .replace(/[aeiou]/ig,'oob')
+        }
 });
-
 
 
 
